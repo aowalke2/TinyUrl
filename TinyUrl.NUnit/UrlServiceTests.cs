@@ -98,7 +98,7 @@ public class Tests
         var exception = Assert.Throws<ArgumentException>(() => _urlService.GetUrl("jdfdal  dd aadd"));
         Assert.That("tinyUrl should not contain space", Is.EqualTo(exception.Message));
     }
-    
+
     [Test]
     public void GetUrl_Throws_WhenTinyDoesNotExists()
     {
@@ -133,6 +133,13 @@ public class Tests
     {
         var exception = Assert.Throws<ArgumentException>(() => _urlService.DeleteUrl("jdfdal  dd aadd"));
         Assert.That("tinyUrl should not contain space", Is.EqualTo(exception.Message));
+    }
+    
+    [Test]
+    public void DeleteUrl_Throws_WhenTinyDoesNotExists()
+    {
+        var exception = Assert.Throws<TinyUrlNotFoundException>(() => _urlService.DeleteUrl("tiny"));
+        Assert.That("Tiny url not found", Is.EqualTo(exception.Message));
     }
     
     [Test]

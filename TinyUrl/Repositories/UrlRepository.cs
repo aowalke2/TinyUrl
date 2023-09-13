@@ -37,7 +37,7 @@ public class UrlRepository : IUrlRepository
     {
         if (!_tinyUrlIndex.ContainsKey(tinyUrl))
         {
-            return;
+            throw new TinyUrlNotFoundException("Tiny url not found");
         }
 
         var id = _tinyUrlIndex[tinyUrl]; 
